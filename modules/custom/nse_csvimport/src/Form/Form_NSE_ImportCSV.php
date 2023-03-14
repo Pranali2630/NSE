@@ -110,22 +110,24 @@ class Form_NSE_ImportCSV extends FormBase {
               $fii[] = $rows[4];
               $pro[] = $rows[5];
 
-              // $string[] = $rows[0];
-              // foreach($string as $row){
-              //   $string = $row[0];
-              //   $words = explode(" ", $string ); 
-              //   $date = implode(' ',array_splice($words, -2 )); 
-              // }
+              $string[] = $rows[0];
+              foreach($string as $row){
+                $string = $row[0];
+                $words = explode(" ", $string ); 
+                $date = implode(' ',array_splice($words, -2 )); 
+                $date = strtotime($date);
+                $date = date('y-m-d', $date);
+              }
               
-             
-              //print_r($client);
-              //exit();
+            //  echo $date;
+            //   //print_r($client);
+            //   exit();
               foreach($client as $row){
             
                 // echo "<pre>";
                 // print_r($row);
 
-                $date = date("Y-m-d");
+                //$date = date("Y-m-d");
                 $FI_Long = $row[1];
                 $FI_Short = $row[2];
                 $FS_Long = $row[3];
@@ -176,7 +178,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 // echo "<pre>";
                 // print_r($row);
 
-                $date = date("Y-m-d");
+                //$date = date("Y-m-d");
                 $FI_Long = $row[1];
                 $FI_Short = $row[2];
                 $FS_Long = $row[3];
@@ -227,7 +229,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 // echo "<pre>";
                 // print_r($row);
 
-                $date = date("Y-m-d");
+                //$date = date("Y-m-d");
                 $FI_Long = $row[1];
                 $FI_Short = $row[2];
                 $FS_Long = $row[3];
@@ -280,7 +282,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 // echo "<pre>";
                 // print_r($row);
 
-                $date = date("Y-m-d");
+               // $date = date("Y-m-d");
                 $FI_Long = $row[1];
                 $FI_Short = $row[2];
                 $FS_Long = $row[3];
