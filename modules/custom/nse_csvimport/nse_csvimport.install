@@ -1,0 +1,291 @@
+<?php
+function nse_csvimport_schema()
+{
+    $schema = array();
+	$schema['nse_client'] = array(
+	  'description' => 'nse client table',
+	  'fields' => array(
+	    'Client_id' => array(
+	      'type' => 'serial',
+	      'not null' => TRUE,
+	    ),
+	    'Date' => array(
+            'type' => 'varchar',
+            'mysql_type' => 'DATETIME',
+	      'not null' => TRUE,
+	    ),
+	    'FI_Long' => array(
+	      'type' => 'int',
+	      'not null' => TRUE,
+	    ),
+        'FI_Short' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+        'FS_Long' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+        'FS_Short' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+        'OI_Call_Long' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+        'OL_Put_Long' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+        'OI_Call_Short' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'OI_Put_Short' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'OS_Call_Long' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'OS_Put_Long' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'OS_Call_Short' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'OS_Put_Short' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'TL_Contracts' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'TS_Contracts' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+	    ),
+	  'primary key' => array('Client_id'),
+	);
+    $schema['nse_dii'] = array(
+        'description' => 'nse client table',
+        'fields' => array(
+          'DII_id' => array(
+            'type' => 'serial',
+            'not null' => TRUE,
+          ),
+          'Date' => array(
+              'type' => 'varchar',
+              'mysql_type' => 'DATETIME',
+            'not null' => TRUE,
+          ),
+          'FI_Long' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'FI_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'FS_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'FS_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OI_Call_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OL_Put_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OI_Call_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OI_Put_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Call_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Put_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Call_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Put_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'TL_Contracts' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'TS_Contracts' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+        ),
+        'primary key' => array('DII_id'),
+      );
+
+      $schema['nse_fii'] = array(
+        'description' => 'nse client table',
+        'fields' => array(
+          'FII_id' => array(
+            'type' => 'serial',
+            'not null' => TRUE,
+          ),
+          'Date' => array(
+              'type' => 'varchar',
+              'mysql_type' => 'DATETIME',
+            'not null' => TRUE,
+          ),
+          'FI_Long' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'FI_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'FS_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'FS_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OI_Call_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OL_Put_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OI_Call_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OI_Put_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Call_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Put_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Call_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Put_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'TL_Contracts' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'TS_Contracts' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+        ),
+        'primary key' => array('FII_id'),
+      );
+      $schema['nse_pro'] = array(
+        'description' => 'nse client table',
+        'fields' => array(
+          'Pro_id' => array(
+            'type' => 'serial',
+            'not null' => TRUE,
+          ),
+          'Date' => array(
+              'type' => 'varchar',
+              'mysql_type' => 'DATETIME',
+            'not null' => TRUE,
+          ),
+          'FI_Long' => array(
+            'type' => 'int',
+            'not null' => TRUE,
+          ),
+          'FI_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'FS_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'FS_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OI_Call_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OL_Put_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+          'OI_Call_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OI_Put_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Call_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Put_Long' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Call_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'OS_Put_Short' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'TL_Contracts' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+            'TS_Contracts' => array(
+              'type' => 'int',
+              'not null' => TRUE,
+            ),
+        ),
+        'primary key' => array('Pro_id'),
+      );
+	return $schema;
+}

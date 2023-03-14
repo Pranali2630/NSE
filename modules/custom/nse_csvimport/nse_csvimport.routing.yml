@@ -1,0 +1,7 @@
+nse_csvimport.nse_csvimportformid:
+  path: /import_csv
+  defaults:
+    _form: '\Drupal\nse_csvimport\Form\Form_NSE_ImportCSV'
+    _title: 'NSE FORM'
+  requirements:
+    _access: 'TRUE'
