@@ -1,10 +1,9 @@
 <?php
 namespace Drupal\nse_csvimport\Form;
+
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
-// use Symfony\Component\HttpFoundation\RedirectResponse;
-// use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
@@ -12,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
 /**
- * Class employeeForm.
+ * Class Form_NSE_ImportCSV.
  *
  * @package Drupal\nse_csvimport\Form
  */
@@ -28,22 +27,13 @@ class Form_NSE_ImportCSV extends FormBase {
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
 
-      
-  
         $form = array(
           '#attributes' => array('enctype' => 'multipart/form-data'),
         );
-
-
-        
-        //$form['file_upload_details'] = array(
-          //'#markup' => t('<b>The File</b>'),
-       // );
-      
+   
         $validators = array(
           'file_validate_extensions' => array(     
-          //  'xlsx',
-            'csv',
+              'csv',
           ),
         );
         $form['csv_file'] = array(
@@ -94,7 +84,6 @@ class Form_NSE_ImportCSV extends FormBase {
                 }
                     $rows[] = $cells;
               }
-
               
               // echo "<pre>";
               // print_r($rows);
@@ -110,14 +99,14 @@ class Form_NSE_ImportCSV extends FormBase {
               $fii[] = $rows[4];
               $pro[] = $rows[5];
 
-              // $string[] = $rows[0];
-              // foreach($string as $row){
-              //   $string = $row[0];
-              //   $words = explode(" ", $string ); 
-              //   $date = implode(' ',array_splice($words, -2 )); 
-              //   $date = strtotime($date);
-              //   $date = date('y-m-d', $date);
-              // }
+              $string[] = $rows[0];
+              foreach($string as $row){
+                $string = $row[0];
+                $words = explode(" ", $string ); 
+                $date = implode(' ',array_splice($words, -2 )); 
+                $date = strtotime($date);
+                $date = date('y-m-d', $date);
+              }
               
             //  echo $date;
             //   //print_r($client);
@@ -127,7 +116,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 // echo "<pre>";
                 // print_r($row);
 
-                $date = date("Y-m-d");
+                //$date = date("Y-m-d");
                 $FI_Long = $row[1];
                 $FI_Short = $row[2];
                 $FS_Long = $row[3];
@@ -178,7 +167,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 // echo "<pre>";
                 // print_r($row);
 
-                $date = date("Y-m-d");
+                //$date = date("Y-m-d");
                 $FI_Long = $row[1];
                 $FI_Short = $row[2];
                 $FS_Long = $row[3];
@@ -229,7 +218,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 // echo "<pre>";
                 // print_r($row);
 
-                $date = date("Y-m-d");
+                //$date = date("Y-m-d");
                 $FI_Long = $row[1];
                 $FI_Short = $row[2];
                 $FS_Long = $row[3];
@@ -241,7 +230,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 $OS_Call_Long = $row[9];
                 $OS_Put_Long = $row[10];
                 $OS_Call_Short = $row[11];
-                $OS_Put_Short = $row[12];
+                $OS_Put_Short = $row[12];                       
                 $TL_Contracts = $row[13];
                 $TS_Contracts = $row[14];
                 
@@ -282,7 +271,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 // echo "<pre>";
                 // print_r($row);
 
-                $date = date("Y-m-d");
+                //$date = date("Y-m-d");
                 $FI_Long = $row[1];
                 $FI_Short = $row[2];
                 $FS_Long = $row[3];
