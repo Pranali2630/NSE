@@ -1,10 +1,9 @@
 <?php
 namespace Drupal\nse_csvimport\Form;
+
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
-// use Symfony\Component\HttpFoundation\RedirectResponse;
-// use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
@@ -12,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 
 /**
- * Class employeeForm.
+ * Class Form_NSE_ImportCSV.
  *
  * @package Drupal\nse_csvimport\Form
  */
@@ -28,21 +27,13 @@ class Form_NSE_ImportCSV extends FormBase {
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
 
-      
-  
         $form = array(
           '#attributes' => array('enctype' => 'multipart/form-data'),
         );
-
-
-        
-        //$form['file_upload_details'] = array(
-          //'#markup' => t('<b>The File</b>'),
-       // );
-      
+   
         $validators = array(
           'file_validate_extensions' => array(     
-           // 'xlsx',
+          //  'xlsx',
             'csv',
           ),
         );
@@ -94,7 +85,6 @@ class Form_NSE_ImportCSV extends FormBase {
                 }
                     $rows[] = $cells;
               }
-
               
               // echo "<pre>";
               // print_r($rows);
@@ -241,7 +231,7 @@ class Form_NSE_ImportCSV extends FormBase {
                 $OS_Call_Long = $row[9];
                 $OS_Put_Long = $row[10];
                 $OS_Call_Short = $row[11];
-                $OS_Put_Short = $row[12];
+                $OS_Put_Short = $row[12];                       
                 $TL_Contracts = $row[13];
                 $TS_Contracts = $row[14];
                 
