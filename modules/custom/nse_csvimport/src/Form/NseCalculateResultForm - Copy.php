@@ -121,7 +121,7 @@ public function submitForm(array &$form, FormStateInterface $form_state)
             <td>Date</td>
             <td>Net Diff</td>
             <td>Client LS</td>
-            <td style='width:50%'>Client%</td>
+            <td>Client%</td>
             <td>Client Diff</td>
           </tr>";
     
