@@ -76,6 +76,8 @@ public function submitForm(array &$form, FormStateInterface $form_state)
         $PrevClient = $PrevFI_Long /($PrevFI_Long + $PrevFI_Short)*100;
       }
 
+
+
       //exit();
     $query = \Drupal::database();
       $selectquery = $query->select('nse_client','nc');
@@ -109,16 +111,15 @@ public function submitForm(array &$form, FormStateInterface $form_state)
           $FI_Long = $content->FI_Long;
           $FI_Short =$content->FI_Short;
           
-          
-         
-            
           if($i == 0){
             //Net Diff = today (FII) – yesterday (FII)
+            // echo $PrevFI_Long;
+            // echo "<br>".$FI_Long;
             $netdiff = $FI_Long - $PrevFI_Long;
 
             //Client LS = OI Long Client/ OI short client
             $ClientLS = $FI_Long / $FI_Short;
-            //echo "<br>Client LS".$Date.":". $ClientLS ;
+            //echo "<br>Clie nt LS".$Date.":". $ClientLS ;
 
             //Client% = OI Long Client/ (OI Long Client+ OI short Client) *100
             $Client = $FI_Long /($FI_Long + $FI_Short)*100;
@@ -173,11 +174,11 @@ public function submitForm(array &$form, FormStateInterface $form_state)
 
           echo"
             <tr>
-              <td>".$Date."</td>
-              <td>".$netdiff."</td>
-              <td>".$ClientLS."</td>
-              <td>".$Client."</td>
-              <td>".$clientDiff."</td>
+              <td>".date('d-m-y',strtotime($Date))."</td>
+              <td>".round($netdiff,2)."</td>
+              <td>".round($ClientLS,2)."</td>
+              <td>".round($Client,2)."</td>
+              <td>".round($clientDiff,2)."</td>
             </tr>
           ";
 
