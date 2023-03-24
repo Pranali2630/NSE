@@ -112,136 +112,135 @@ class NseImportCsvForm extends FormBase
             $date = date('y-m-d', $date);
         }
 
-        foreach ($client as $row) {
-            //$date = date("Y-m-d");
-            $FI_Long = $row[1];
-            $FI_Short = $row[2];
-            $FS_Long = $row[3];
-            $FS_Short = $row[4];
-            $OI_Call_Long = $row[5];
-            $OL_Put_Long = $row[6];
-            $OI_Call_Short = $row[7];
-            $OI_Put_Short = $row[8];
-            $OS_Call_Long = $row[9];
-            $OS_Put_Long = $row[10];
-            $OS_Call_Short = $row[11];
-            $OS_Put_Short = $row[12];
-            $TL_Contracts = $row[13];
-            $TS_Contracts = $row[14];
+        foreach ( $client as $row ) {
+          
+          $FI_Long = $row[1];
+          $FI_Short = $row[2];
+          $FS_Long = $row[3];
+          $FS_Short = $row[4];
+          $OI_Call_Long = $row[5];
+          $OL_Put_Long = $row[6];
+          $OI_Call_Short = $row[7];
+          $OI_Put_Short = $row[8];
+          $OS_Call_Long = $row[9];
+          $OS_Put_Long = $row[10];
+          $OS_Call_Short = $row[11];
+          $OS_Put_Short = $row[12];
+          $TL_Contracts = $row[13];
+          $TS_Contracts = $row[14];
 
-            $query = \Drupal::database();
-            $selectquery = $query->select('nse_client', 'nc');
-            $selectquery->fields('nc', ['date']);
-            $selectquery->condition('nc.date', $date);
-            $result = $selectquery->countQuery()->execute()->fetchField();
+          $query = \Drupal::database();
+          $selectquery = $query->select('nse_client', 'nc');
 
-            if ($result) {
-                $query->update('nse_client')->fields(array(
-                    'Date' => $date,
-                    'FI_Long' => $FI_Long,
-                    'FI_Short' => $FI_Short,
-                    'FS_Long' => $FS_Long,
-                    'FS_Short' => $FS_Short,
-                    'OI_Call_Long' => $OI_Call_Long,
-                    'OL_Put_Long' => $OL_Put_Long,
-                    'OI_Call_Short' => $OI_Call_Short,
-                    'OI_Put_Short' => $OI_Put_Short,
-                    'OS_Call_Long' => $OS_Call_Long,
-                    'OS_Put_Long' => $OS_Put_Long,
-                    'OS_Call_Short' => $OS_Call_Short,
-                    'OS_Put_Short' => $OS_Put_Short,
-                    'TL_Contracts' => $TL_Contracts,
-                    'TS_Contracts' => $TS_Contracts,
+          $selectquery->fields('nc', ['date']);
+          $selectquery->condition('nc.date', $date);
+          $result = $selectquery->countQuery()->execute()->fetchField();
 
-                ))->condition('Date', $date)->execute();
+          if ( $result ) {
+              $query->update('nse_client')->fields(array(
+                'Date' => $date,
+                'FI_Long' => $FI_Long,
+                'FI_Short' => $FI_Short,
+                'FS_Long' => $FS_Long,
+                'FS_Short' => $FS_Short,
+                'OI_Call_Long' => $OI_Call_Long,
+                'OL_Put_Long' => $OL_Put_Long,
+                'OI_Call_Short' => $OI_Call_Short,
+                'OI_Put_Short' => $OI_Put_Short,
+                'OS_Call_Long' => $OS_Call_Long,
+                'OS_Put_Long' => $OS_Put_Long,
+                'OS_Call_Short' => $OS_Call_Short,
+                'OS_Put_Short' => $OS_Put_Short,
+                'TL_Contracts' => $TL_Contracts,
+                'TS_Contracts' => $TS_Contracts,
 
-            } else {
-                $query->insert('nse_client')->fields(array(
-                    'Date' => $date,
-                    'FI_Long' => $FI_Long,
-                    'FI_Short' => $FI_Short,
-                    'FS_Long' => $FS_Long,
-                    'FS_Short' => $FS_Short,
-                    'OI_Call_Long' => $OI_Call_Long,
-                    'OL_Put_Long' => $OL_Put_Long,
-                    'OI_Call_Short' => $OI_Call_Short,
-                    'OI_Put_Short' => $OI_Put_Short,
-                    'OS_Call_Long' => $OS_Call_Long,
-                    'OS_Put_Long' => $OS_Put_Long,
-                    'OS_Call_Short' => $OS_Call_Short,
-                    'OS_Put_Short' => $OS_Put_Short,
-                    'TL_Contracts' => $TL_Contracts,
-                    'TS_Contracts' => $TS_Contracts,
-                ))->execute();
-            }
-            $query = \Drupal::database();
+              ))->condition('Date', $date)->execute();
+          } else {
+              $query->insert('nse_client')->fields(array(
+                'Date' => $date,
+                'FI_Long' => $FI_Long,
+                'FI_Short' => $FI_Short,
+                'FS_Long' => $FS_Long,
+                'FS_Short' => $FS_Short,
+                'OI_Call_Long' => $OI_Call_Long,
+                'OL_Put_Long' => $OL_Put_Long,
+                'OI_Call_Short' => $OI_Call_Short,
+                'OI_Put_Short' => $OI_Put_Short,
+                'OS_Call_Long' => $OS_Call_Long,
+                'OS_Put_Long' => $OS_Put_Long,
+                'OS_Call_Short' => $OS_Call_Short,
+                'OS_Put_Short' => $OS_Put_Short,
+                'TL_Contracts' => $TL_Contracts,
+                'TS_Contracts' => $TS_Contracts,
+              ))->execute();
+           }
+          $query = \Drupal::database();
         }
+ 
+      //Insert value in Dii table
 
-        //Insert value in Dii table
+      foreach ($dii as $row) {
+        //   //$date = date("Y-m-d");
+        $FI_Long = $row[1];
+        $FI_Short = $row[2];
+        $FS_Long = $row[3];
+        $FS_Short = $row[4];
+        $OI_Call_Long = $row[5];
+        $OL_Put_Long = $row[6];
+        $OI_Call_Short = $row[7];
+        $OI_Put_Short = $row[8];
+        $OS_Call_Long = $row[9];
+        $OS_Put_Long = $row[10];
+        $OS_Call_Short = $row[11];
+        $OS_Put_Short = $row[12];
+        $TL_Contracts = $row[13];
+        $TS_Contracts = $row[14];
 
-        foreach ($dii as $row) {
-            //   //$date = date("Y-m-d");
-            $FI_Long = $row[1];
-            $FI_Short = $row[2];
-            $FS_Long = $row[3];
-            $FS_Short = $row[4];
-            $OI_Call_Long = $row[5];
-            $OL_Put_Long = $row[6];
-            $OI_Call_Short = $row[7];
-            $OI_Put_Short = $row[8];
-            $OS_Call_Long = $row[9];
-            $OS_Put_Long = $row[10];
-            $OS_Call_Short = $row[11];
-            $OS_Put_Short = $row[12];
-            $TL_Contracts = $row[13];
-            $TS_Contracts = $row[14];
+        $query = \Drupal::database();
+        $selectquery = $query->select('nse_dii', 'nd');
+        $selectquery->fields('nd', ['date']);
+        $selectquery->condition('nd.date', $date);
+        $result = $selectquery->countQuery()->execute()->fetchField();
 
-            $query = \Drupal::database();
-            $selectquery = $query->select('nse_dii', 'nd');
-            $selectquery->fields('nd', ['date']);
-            $selectquery->condition('nd.date', $date);
-            $result = $selectquery->countQuery()->execute()->fetchField();
-
-            if ($result) {
-                $query->update('nse_dii')->fields(array(
-                    'Date' => $date,
-                    'FI_Long' => $FI_Long,
-                    'FI_Short' => $FI_Short,
-                    'FS_Long' => $FS_Long,
-                    'FS_Short' => $FS_Short,
-                    'OI_Call_Long' => $OI_Call_Long,
-                    'OL_Put_Long' => $OL_Put_Long,
-                    'OI_Call_Short' => $OI_Call_Short,
-                    'OI_Put_Short' => $OI_Put_Short,
-                    'OS_Call_Long' => $OS_Call_Long,
-                    'OS_Put_Long' => $OS_Put_Long,
-                    'OS_Call_Short' => $OS_Call_Short,
-                    'OS_Put_Short' => $OS_Put_Short,
-                    'TL_Contracts' => $TL_Contracts,
-                    'TS_Contracts' => $TS_Contracts,
-                ))->condition('Date', $date)->execute();
-
-            } else {
-                $query->insert('nse_dii')->fields(array(
-                    'Date' => $date,
-                    'FI_Long' => $FI_Long,
-                    'FI_Short' => $FI_Short,
-                    'FS_Long' => $FS_Long,
-                    'FS_Short' => $FS_Short,
-                    'OI_Call_Long' => $OI_Call_Long,
-                    'OL_Put_Long' => $OL_Put_Long,
-                    'OI_Call_Short' => $OI_Call_Short,
-                    'OI_Put_Short' => $OI_Put_Short,
-                    'OS_Call_Long' => $OS_Call_Long,
-                    'OS_Put_Long' => $OS_Put_Long,
-                    'OS_Call_Short' => $OS_Call_Short,
-                    'OS_Put_Short' => $OS_Put_Short,
-                    'TL_Contracts' => $TL_Contracts,
-                    'TS_Contracts' => $TS_Contracts,
-                ))->execute();
-            }
-            $query = \Drupal::database();
-        }
+        if ($result) {
+          $query->update('nse_dii')->fields(array(
+            'Date' => $date,
+            'FI_Long' => $FI_Long,
+            'FI_Short' => $FI_Short,
+            'FS_Long' => $FS_Long,
+            'FS_Short' => $FS_Short,
+            'OI_Call_Long' => $OI_Call_Long,
+            'OL_Put_Long' => $OL_Put_Long,
+            'OI_Call_Short' => $OI_Call_Short,
+            'OI_Put_Short' => $OI_Put_Short,
+            'OS_Call_Long' => $OS_Call_Long,
+            'OS_Put_Long' => $OS_Put_Long,
+            'OS_Call_Short' => $OS_Call_Short,
+            'OS_Put_Short' => $OS_Put_Short,
+            'TL_Contracts' => $TL_Contracts,
+            'TS_Contracts' => $TS_Contracts,
+          ))->condition('Date', $date)->execute();
+        } else {
+            $query->insert('nse_dii')->fields(array(
+              'Date' => $date,
+              'FI_Long' => $FI_Long,
+              'FI_Short' => $FI_Short,
+              'FS_Long' => $FS_Long,
+              'FS_Short' => $FS_Short,
+              'OI_Call_Long' => $OI_Call_Long,
+              'OL_Put_Long' => $OL_Put_Long,
+              'OI_Call_Short' => $OI_Call_Short,
+              'OI_Put_Short' => $OI_Put_Short,
+              'OS_Call_Long' => $OS_Call_Long,
+              'OS_Put_Long' => $OS_Put_Long,
+              'OS_Call_Short' => $OS_Call_Short,
+              'OS_Put_Short' => $OS_Put_Short,
+              'TL_Contracts' => $TL_Contracts,
+              'TS_Contracts' => $TS_Contracts,
+            ))->execute();
+          }
+        $query = \Drupal::database();
+      }
 
         // //Insert value in Fii table
         foreach ($fii as $row) {

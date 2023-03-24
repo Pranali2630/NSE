@@ -1,23 +1,22 @@
 nse_csvimport.nse_csvimportformid:
   path: /import_csv
   defaults:
-    _form: '\Drupal\nse_csvimport\Form\Form_NSE_ImportCSV'
+    _form: '\Drupal\nse_csvimport\Form\NseImportCsvForm'
     _title: 'NSE FORM'
   requirements:
     _access: 'TRUE'
 
-
 nse_csvimport.nsecalculateresultformid:
   path: /calculate
-  defaults: 
+  defaults:
     _form: '\Drupal\nse_csvimport\Form\NseCalculateResultForm'
     _title: 'NSE FORM'
   requirements:
     _access: 'TRUE'
-
-# nse_csvimport.display:
-#   path: '/display/{from}/{to}'
-#   defaults:    
-#     _controller: '\Drupal\nse_csvimport\Controller\nseController::display'
-#   requirements:
-#     _permission: 'access content' 
+  
+nse_csvimport.nseResult:
+  path: /nseResult
+  defaults:
+    _controller: '\Drupal\nse_csvimport\Controller\NseCalculateController::nseResult'
+  requirements:
+    _access: 'TRUE'

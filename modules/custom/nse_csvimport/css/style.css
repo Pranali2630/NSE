@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: normal;
+    border-bottom: 2px solid !important;
+ }
+ table, td, th {
+    border: 2px solid !important;
+ }
+ th , td
+ {
+    text-align:center !important;
+ }
+ .yellow
+ {
+    background-color:yellow;
+ }
+ .red
+ {
+    background-color:red;
+ }
+ .green
+ {
+    background-color:#57be57;
+ }
