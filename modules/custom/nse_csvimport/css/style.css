@@ -1,25 +1,57 @@
+h3
+{
+   text-align: center;
+   margin: 0;
+}
 table {
-    width: 100%;
-    border-collapse: collapse;
-    white-space: normal;
-    border-bottom: 2px solid !important;
+   width: 100%;
+   max-width: 100%;
+   margin-bottom: 20px;
+   background-color: transparent;
+   border: 1px solid #ddd;
+   border-collapse: collapse;
+   border-spacing: 0;
  }
  table, td, th {
-    border: 2px solid !important;
+    border: 1px solid #dee2e6 !important;
+    
  }
+ th
+ {
+   /* background-color: #2494db; */
+   /* color: white !important; */
+ }
+
+ td
+ {
+   /* color: #2494db !important; */
+ } 
+ 
  th , td
  {
     text-align:center !important;
- }
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+ } 
+
+ 
  .yellow
  {
     background-color:yellow;
+    /* color: white !important; */
  }
+ 
  .red
  {
     background-color:red;
+    /* color: white !important; */
  }
+ 
  .green
  {
     background-color:#57be57;
+    /* color: white !important; */
  }
+ 
+
+ 

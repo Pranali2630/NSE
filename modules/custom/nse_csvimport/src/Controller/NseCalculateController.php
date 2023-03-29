@@ -46,29 +46,40 @@
     
             //if want all data
             if ($type == "All") {
-                  $query = \Drupal::database();
+                $query = \Drupal::database();
                   // $query->('nse_client', 'c');
-                 $select = $query->select('nse_client','c');
+                $select = $query->select('nse_client','c');
                 $select->Join('nse_dii', 'd', 'c.Date = d.Date');
                 $select->Join('nse_fii', 'f', 'd.Date = f.Date');
                 $select->Join('nse_pro', 'p', 'd.Date = p.Date');
     
                 $select->fields('c', array('date'=>'Date', 'c_FI_Long'=>'FI_Long', 'c_FI_Short'=>'FI_Short'))
                 ->fields('d', array('d_FI_Long'=>'FI_Long', 'd_FI_Short'=>'FI_Short'))
-                ->fields('f', array('f_FI_Long'=>'FI_Long', 'f_FI_Short'=>'FI_Short'))
+                ->fields('f', array('f_FI_Long'=>'FI_Long', 'f_FI_Short'=>'FI_Short', 'f_OI_Call_Long'=>'OI_Call_Long', 'f_OI_Put_Long'=>'OL_Put_Long', 'f_OI_Call_Short'=>'OI_Call_Short', 'f_OI_Put_Short'=>'OI_Put_Short'))
                 ->fields('p', array('p_FI_Long'=>'FI_Long', 'p_FI_Short'=>'FI_Short'))
                 ->condition('c.date', array($FromDate,  $to), 'BETWEEN');
     
                 $result = $select->execute();
                 $records = $result->fetchAll();
 
+                // echo "<pre>";
+                // print_r($records);
+                // exit();
+
                 $i = 0;
                 $clientDiff = [];
                 $diiDiff = [];
                 $fiiDiff = [];
                 $netdiff = [];
+                $netdiffshort = [];
                 $proDiff = [];
                 $date = [];
+                $fii_call_long=[];
+                $fii_put_short=[];
+                $bullish=[];
+                $fii_put_long=[];
+                $fii_call_short=[];
+                $bearish=[];
     
                 foreach ($records as $row => $content) {
                     $previousValue = null;
@@ -79,6 +90,10 @@
                     $d_FI_Short = $content->d_FI_Short;
                     $f_FI_Long = $content->f_FI_Long;
                     $f_FI_Short = $content->f_FI_Short;
+                    $f_OI_Call_Long = $content->OI_Call_Long;
+                    $f_OL_Put_Long = $content->OL_Put_Long;
+                    $f_OI_Call_Short = $content->OI_Call_Short;
+                    $f_OI_Put_Short = $content->OI_Put_Short;
                     $p_FI_Long = $content->p_FI_Long;
                     $p_FI_Short = $content->p_FI_Short;
     
@@ -95,8 +110,13 @@
                             $d_FI_ShortPrev = $contentPrev->d_FI_Short;
                             $f_FI_LongPrev = $contentPrev->f_FI_Long;
                             $f_FI_ShortPrev = $contentPrev->f_FI_Short;
+                            $f_OI_Call_LongPrev = $contentPrev->OI_Call_Long;
+                            $f_OL_Put_LongPrev = $contentPrev->OL_Put_Long;
+                            $f_OI_Call_ShortPrev = $contentPrev->OI_Call_Short;
+                            $f_OI_Put_ShortPrev = $contentPrev->OI_Put_Short;
                             $p_FI_LongPrev = $contentPrev->p_FI_Long;
                             $p_FI_ShortPrev = $contentPrev->p_FI_Short;
+
                             $ClientPrev =
                                 ($FI_LongPrev / ($FI_LongPrev + $FI_ShortPrev)) *
                                 100;
@@ -137,11 +157,12 @@
 
                             //FII Calculations
                             $FiiPrev =
-                                ($f_FI_LongPrev / ($f_FI_LongPrev + $f_FI_ShortPrev)) *
-                                100;
+                                ($f_FI_LongPrev / ($f_FI_LongPrev + $f_FI_ShortPrev)) * 100;
     //  $previousValue
                             $netdiff[] = $f_FI_Long - $f_FI_LongPrev;
+                            $netdiffshort[] = $f_FI_Short - $f_FI_ShortPrev;
                             // $date[] = $content->Date;
+                            // print_r($netdiffshort); 
     
                             //Client LS = OI Long Client/ OI short client
                             $FiiLS = $f_FI_Long / $f_FI_Short;
@@ -182,17 +203,41 @@
                         $proDiff[] = round($prodiff, 2);
 
 
+                        //FII Options Calculation
+                        // echo "<br>prev".$f_OI_Call_LongPrev."<br>today".$f_OI_Call_Long;
+                        $f_call_long=$f_OI_Call_Long-$f_OI_Call_LongPrev;
+                        $f_put_short=$f_OI_Put_Short-$f_OI_Put_ShortPrev;
+                        $fii_call_long[]=$f_call_long;
+                        $fii_put_short[]=$f_put_short;
+                        $bullish[] = $f_call_long+$f_put_short;
+
+                        //echo "<br>prev".$f_OI_Call_ShortPrev."today".$f_OI_Call_Short;
+                        $fi_call_short=$f_OI_Call_Short-$f_OI_Call_ShortPrev;
+                        $fi_put_long=$f_OL_Put_Long-$f_OL_Put_LongPrev;
+                        $fii_call_short[]=$fi_call_short;
+                        $fii_put_long[]=$fi_put_long;
+                        $bearish[] = $fi_call_short+$fi_put_long;
+                       
+                        
+
+
                 // dump($records);die();
             }
         }
         $i++;
+    } 
     //     echo "<pre>";
-    // print_r($previousValue);
+    // print_r($records);
     // echo "<pre>";
     // print_r($netdiff);
-    }
-    
-
+    // echo "<pre>";
+    // print_r($fii_call_short);
+    // echo "<pre>";
+    // print_r($fii_put_long);
+    // echo "<pre>";
+    // print_r($bearish);
+     
+    // exit();
     
 }elseif ($type == "Client") {
                 //else if need only client data
@@ -335,6 +380,9 @@
                 $j = 0;
                 $fiiDiff = [];
                 $netdiff = [];
+                $netdiffshort = [];
+
+
                 $date = [];
     
                 foreach ($recordFii as $row => $content) {
@@ -357,6 +405,9 @@
                                 100;
     
                             $netdiff[] = $FI_Long - $FI_LongPrev;
+                            $netdiffshort[] = $FI_Short - $FI_ShortPrev;
+
+
                             $date[] = $content->Date;
     
                             //Client LS = OI Long Client/ OI short client
@@ -423,7 +474,7 @@
                             // echo "<br>Cureent Data".$Date;
                             // echo $Date."<br>".$FI_Long."<br>".$FI_Short;
     
-                            $netdiff[] = $FI_Long - $FI_LongPrev;
+                            // $netdiff[] = $FI_Long - $FI_LongPrev;
     
                             //Client LS = OI Long Client/ OI short client
                             //echo "<br>__________".$Date."_______________";
@@ -453,22 +504,40 @@
     $date=date('d-m-y',strtotime($key));
     
     $netdiffN = $netdiff[$id];
-    
+    $netdiffshortN = $netdiffshort[$id];
     $fiiDiffN=$fiiDiff[$id];
     $diiDiffN = $diiDiff[$id];
     $clientDiffN = $clientDiff[$id];
     $proDiffN = $proDiff[$id];
-    $rows[] = array($date, $netdiffN, $fiiDiffN,
-     $diiDiffN, $clientDiffN, $proDiffN
+    $fii_call_longN=$fii_call_long[$id];
+    $fii_put_shortN=$fii_put_short[$id];
+    $bullishN = $bullish[$id];
+    $fii_call_shortN=$fii_call_short[$id];
+    $fii_put_longN=$fii_put_long[$id];
+    $bearishN = $bearish[$id];
+    $rows[] = array(
+        'date'=>$date, 
+        'netdiff'=>$netdiffN,
+        'netdiffshort' =>$netdiffshortN, 
+        'fiiDiff'=>$fiiDiffN,
+        'diiDiff'=>$diiDiffN, 
+        'clientDiff'=>$clientDiffN, 
+        'proDiff'=>$proDiffN,
+        'fii_call_long'=>$fii_call_longN,
+        'fii_put_short'=>$fii_put_shortN,
+        'bullish'=>$bullishN,
+        'fii_call_short'=>$fii_call_shortN,
+        'fii_put_long'=>$fii_put_longN,
+        'bearish'=>$bearishN
 );
     }
-    //  print_r($diiDiffN); exit();
+    // echo "<pre>";
+    // print_r($rows);
     //  exit();
     
      return [
         '#theme' => 'listpage',
         '#items' => $rows,
-        // '#title' => $this->t('All students'),
         '#attached' => [
             'library' => [
               'nse_csvimport/custom',
