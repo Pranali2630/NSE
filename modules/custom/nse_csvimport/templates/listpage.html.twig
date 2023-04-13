@@ -1,6 +1,5 @@
-
 <div class="view-content">
-   <h3>Future Calculation</h3>
+   <h2>Future Calculation</h2>
    <table class="views-table cols-4" id="table">
       <thead>
          <tr>
@@ -17,7 +16,7 @@
       <tbody>
         {% for rec in items %}
          <tr>
-            <td class="views-field views-field-id">{{ rec.date}}</td>
+            <td class="views-field views-field-id date-field">{{ rec.date}}</td>
             
             <td headers="view-name-table-column" class="views-field views-field-name">{{ rec.netdiff }} </td>
             <td headers="view-name-table-column" class="views-field views-field-name">{{ rec.netdiffshort }} </td>
@@ -64,32 +63,31 @@
       </tbody>
    </table>
 
-   <h3>Option Calculation</h3>
+   <h2>Option Calculation</h2>
    <table class="views-table cols-4" id="option">
       <thead>
          <tr>
             <th id="view-name-table-column" class="views-field views-field-name" scope="col">Date</th>
-            <th id="view-email-table-column" class="views-field views-field-email" scope="col">FII Call Long</th>
-            <th id="view-email-table-column" class="views-field views-field-email" scope="col">FII Put Long</th>
-            <th id="view-email-table-column" class="views-field views-field-email" scope="col">FII Call Short</th>
-            <th id="view-email-table-column" class="views-field views-field-email" scope="col">FII Put Short</th>
-            <th id="view-mobile-table-column" class="views-field views-field-mobile" scope="col">Bullish</th>
-            <th id="view-mobile-table-column" class="views-field views-field-mobile" scope="col">Bearish</th>
+            <th id="view-email-table-column" class="views-field views-field-email" scope="col">FII Bullish</th>
+            <th id="view-email-table-column" class="views-field views-field-email" scope="col">FII Bearish</th>
+            <th id="view-email-table-column" class="views-field views-field-email" scope="col">Client Bullish</th>
+            <th id="view-email-table-column" class="views-field views-field-email" scope="col">Client Bearish</th>
+            <th id="view-mobile-table-column" class="views-field views-field-mobile" scope="col">Pro Bullish</th>
+            <th id="view-mobile-table-column" class="views-field views-field-mobile" scope="col">Pro Bearish</th>
          </tr>
       </thead>
       <tbody>
         {% for rec in items %}
           <tr>
-              <td class="views-field views-field-id">{{ rec.date}}</td>
-              <td class="views-field views-field-id">{{ rec.fii_call_long}}</td>
-              <td class="views-field views-field-id">{{ rec.fii_put_long}}</td>
-              <td class="views-field views-field-id">{{ rec.fii_call_short}}</td>
-              <td class="views-field views-field-id">{{ rec.fii_put_short}}</td>
+              <td class="views-field views-field-id date-field">{{ rec.date}}</td>
               <td class="views-field views-field-id">{{ rec.bullish}}</td>
               <td class="views-field views-field-id">{{ rec.bearish}}</td>
+              <td class="views-field views-field-id">{{ rec.clientbullish}}</td>
+              <td class="views-field views-field-id">{{ rec.clientbearish}}</td>
+              <td class="views-field views-field-id">{{ rec.probullish}}</td>
+              <td class="views-field views-field-id">{{ rec.probearish}}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
 </div>
-
