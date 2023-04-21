@@ -20,3 +20,11 @@ nse_csvimport.nseResult:
     _controller: '\Drupal\nse_csvimport\Controller\NseCalculateController::nseResult'
   requirements:
     _access: 'TRUE'
+
+
+nse_csvimport.export:
+  path: '/export'
+  defaults:
+    _controller: '\Drupal\nse_csvimport\Controller\NseCalculateController::downloadCsv'
+  requirements:
+    _permission: 'access content' 

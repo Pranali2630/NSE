@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "44b613eb241377699956788e85484f9f",
+    "content-hash": "727240a91acbd2e914f5767173f8563f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -888,6 +888,50 @@
             "keywords": [
                 "drupal"
             ]
+        },
+        {
+            "name": "drupal/mili",
+            "version": "10.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mili.git",
+                "reference": "10.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mili-10.1.0.zip",
+                "reference": "10.1.0",
+                "shasum": "298e5712658218872ba4beba770db556291f9b7d"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "drupal": {
+                    "version": "10.1.0",
+                    "datestamp": "1671904207",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "ravis",
+                    "homepage": "https://www.drupal.org/user/79351"
+                }
+            ],
+            "description": "Mili is a light weight drupal 8, 9 and 10 theme by <a href=\"https://drupar.com\" target=\"_blank\">Drupar.com</a>",
+            "homepage": "https://www.drupal.org/project/mili",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mili"
+            }
         },
         {
             "name": "egulias/email-validator",
