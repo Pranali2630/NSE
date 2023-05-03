@@ -546,10 +546,12 @@ class NseCalculateController extends ControllerBase
 
 
         $rows = array();
+        $dateChart=array();
 
         foreach ($date as $id => $key) {
 
             $date = date('d-m-y', strtotime($key));
+            $dateChart[] = "'".date('d-m-y', strtotime($key))."'";
 
             $netdiffN = $netdiff[$id];
             $netdiffshortN = $netdiffshort[$id];
@@ -589,6 +591,7 @@ class NseCalculateController extends ControllerBase
 
             $rows[] = array(
                 'date' => $date,
+                
                 'netdiff' => $netdiffN,
                 'netdiffshort' => $netdiffshortN,
                 'fiiDiff' => $fiiDiffN,
@@ -614,10 +617,11 @@ class NseCalculateController extends ControllerBase
                 'probearish' => $probearishN,
             );
         }
-
+        // print_r(array_values($dateChart));exit();
         return [
             '#theme' => 'listpage',
             '#items' => $rows,
+            // '#date' => $dateChart,
             '#attached' => [
                 'library' => [
                     'nse_csvimport/custom',

@@ -8,7 +8,8 @@
             'listpage' => [
                 'template' => 'listpage',
                 'variables' => array(
-                    'items' => [],
+                    'items' =>[],
+                    'date' => [],
                     'title' => ''
                 )
             ],

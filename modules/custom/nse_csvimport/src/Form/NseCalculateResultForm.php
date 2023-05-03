@@ -27,20 +27,24 @@ class NseCalculateResultForm extends FormBase
      */
     public function buildForm(array $form, FormStateInterface $form_state)
     {
+
+        
         $form["date"] = [
             "#type" => "date",
-            "#title" => t("Select From Date"),
+            "#title" => t("From Date"),
             "#required" => true,
         ];
         $form["another_date"] = [
             "#type" => "date",
-            "#title" => t("Select To Date"),
+            "#title" => t("To Date"),
             "#required" => true,
         ];
         $form["submit"] = [
             "#type" => "submit",
-            "#value" => t("Save"),
+            "#value" => t("Calculate"),
         ];
+
+      
         return $form;
     }
     /**

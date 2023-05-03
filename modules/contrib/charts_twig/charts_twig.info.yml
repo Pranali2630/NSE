@@ -1,0 +1,12 @@
+name: 'Charts Twig'
+type: module
+description: 'Twig extension using the Charts API to render a chart.'
+core_version_requirement: ^8 || ^9
+package: 'Charts'
+dependencies:
+  - charts:charts (>=5.0.x)
+
+# Information added by Drupal.org packaging script on 2021-11-10
+version: '1.0.0'
+project: 'charts_twig'
+datestamp: 1636585258

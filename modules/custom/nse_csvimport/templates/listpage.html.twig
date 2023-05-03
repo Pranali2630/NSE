@@ -1,6 +1,41 @@
+<head>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
 
- 
  <div class="view-content">
+ {% set date = [] %}
+ {% set netdiff = [] %}
+ {% set shortnetdiff = [] %}
+ {% for rec in items %}
+    {% set date = date|merge([rec.date]) %}  
+    {% set netdiff = netdiff|merge([rec.netdiff]) %} 
+    {% set shortnetdiff = shortnetdiff|merge([rec.netdiffshort]) %}  
+ {% endfor %}
+
+
+   {% set title = 'The Chart Title' %}
+
+    {%
+      set series = {
+        'my_series' : {
+          'title' : 'Long Net Difference plotted',
+          'data' : netdiff
+        },
+        'my_series1' : {
+          'title' : 'Short Net Difference plotted',
+          'data' : shortnetdiff
+        }
+      }
+    %}
+   
+    {%
+      set xaxis = {
+        'title' : 'X-Axis Label',
+        'labels' : date
+      }
+    %}
+    
+    {{ chart('my_twig_chart', 'line', title, series, xaxis, [], []) }}
    <h2>Future Calculation</h2>
    <table class="views-table cols-4" id="table">
       <thead>
@@ -93,5 +128,6 @@
       </tbody>
     </table>
 
-    <a href="/nse/export" class="button--primary button  views-display-link views-display-link-data_export_1 btn--primary date-field">Download</a>
+    <a href="/nse/export" class="views-display-link views-display-link-data_export_1  date-field download">
+    Download <i class="fa fa-download fa-2x"></i></a>
 </div>

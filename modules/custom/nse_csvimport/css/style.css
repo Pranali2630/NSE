@@ -50,4 +50,14 @@ table {
     background-color:#57be57;
     /* color: white !important; */
  }
- 
+
+ .download {
+   border: 1px solid var(--theme-color);
+   padding: 10px;
+   border-radius: 5px;
+}
+
+.fa-download {
+   font-size: 1em !important;
+}
+

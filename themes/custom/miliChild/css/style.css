@@ -1,0 +1,61 @@
+#nsecalculateresultformid .form-item {
+    /* margin-bottom: 1rem; */
+    border: 1px solid #e3e3e3 !important;
+    width: 25%!important;
+    /* position: absolute; */
+    z-index: 10;
+    color: #717171;
+    border-right: 1px solid #e3e3e3!important;
+    height: 100%;
+    /* padding: 15px; */
+    font-size: 12px;
+    float:left;
+    margin-left:10px;
+    margin-right: 30px;
+    border-radius: 8px;
+  }
+  #nsecalculateresultformid label
+  {
+    
+    float: left!important;
+    /* position: absolute; */
+    /* z-index: 10; */
+    /* color: #717171; */
+    border-right: 2px solid #e3e3e3;
+    /* height: 100%; */
+    font-size: 15px;
+    width: 100px;
+    /* text-align: left; */
+    /* line-height: 55px;
+    margin: -15px; */
+    padding: 9px;
+  }
+  
+  .button 
+  {
+    padding: 4px;
+    margin: 3px;
+  }
+  #main-wrapper {
+    height: 315px;
+   
+  }
+  
+  #edit-date , #edit-another-date{
+    margin-left: 40px;
+    margin-top: 10px;
+    border: 0px;
+    color: #717171;
+    font-size: 15px;
+  }
+
+                         
+  [type="date"] {
+    background:#fafafa url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+  }
+  [type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+  [type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
