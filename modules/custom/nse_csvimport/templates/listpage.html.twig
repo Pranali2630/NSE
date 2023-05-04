@@ -6,24 +6,86 @@
  {% set date = [] %}
  {% set netdiff = [] %}
  {% set shortnetdiff = [] %}
+ {% set fiidiff = [] %}
+ {% set diidiff = [] %}
+ {% set clientdiff = [] %}
+ {% set prodiff = [] %}
+ {% set fiibullish = [] %}
+ {% set fiibearish = [] %}
+ {% set clientbullish = [] %}
+ {% set clientbearish = [] %}
+ {% set probullish = [] %}
+ {% set probearish = [] %}
+ 
  {% for rec in items %}
     {% set date = date|merge([rec.date]) %}  
     {% set netdiff = netdiff|merge([rec.netdiff]) %} 
-    {% set shortnetdiff = shortnetdiff|merge([rec.netdiffshort]) %}  
+    {% set shortnetdiff = shortnetdiff|merge([rec.netdiffshort]) %} 
+    {% set fiidiff = fiidiff|merge([rec.fiiDiff]) %}
+    {% set diidiff = diidiff|merge([rec.diiDiff]) %} 
+    {% set clientdiff = diidiff|merge([rec.clientDiff]) %} 
+    {% set prodiff = diidiff|merge([rec.proDiff]) %} 
+    {% set fiibullish = diidiff|merge([rec.bullish]) %} 
+    {% set fiibearish = diidiff|merge([rec.bearish]) %}
+    {% set clientbullish = diidiff|merge([rec.clientbullish]) %} 
+    {% set clientbearish = diidiff|merge([rec.clientbearish]) %} 
+    {% set probullish = diidiff|merge([rec.probullish]) %} 
+    {% set probearish = diidiff|merge([rec.probearish]) %} 
+    
  {% endfor %}
 
 
-   {% set title = 'The Chart Title' %}
+   {% set title = 'Future and Optinal Calculation Chart' %}
 
     {%
       set series = {
-        'my_series' : {
+        'long_diff' : {
           'title' : 'Long Net Difference plotted',
           'data' : netdiff
         },
-        'my_series1' : {
+        'short_diff' : {
           'title' : 'Short Net Difference plotted',
           'data' : shortnetdiff
+        },
+        'fii_diff' : {
+          'title' : 'FII Difference plotted',
+          'data' : fiidiff
+        },
+        'dii_diff' : {
+          'title' : 'DII Difference plotted',
+          'data' : diidiff
+        },
+        'client_diff' : {
+          'title' : 'Client Difference plotted',
+          'data' : clientdiff
+        },
+        'pro_diff' : {
+          'title' : 'Pro Difference plotted',
+          'data' : prodiff
+        },
+        'fii_bullish' : {
+          'title' : 'FII Bullish plotted',
+          'data' : fiibullish
+        },
+        'fii_bearish' : {
+          'title' : 'FII Bearish plotted',
+          'data' : fiibearish
+        },
+        'client_bullish' : {
+          'title' : 'Client Bullish plotted',
+          'data' : clientbullish
+        },
+        'client_bearish' : {
+          'title' : 'Client Bearish plotted',
+          'data' : clientbearish
+        },
+        'pro_bullish' : {
+          'title' : 'Pro Bullish plotted',
+          'data' : probullish
+        },
+        'pro_bearish' : {
+          'title' : 'Pro Bearish plotted',
+          'data' : probearish
         }
       }
     %}
