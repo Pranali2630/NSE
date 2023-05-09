@@ -23,30 +23,22 @@
     {% set shortnetdiff = shortnetdiff|merge([rec.netdiffshort]) %} 
     {% set fiidiff = fiidiff|merge([rec.fiiDiff]) %}
     {% set diidiff = diidiff|merge([rec.diiDiff]) %} 
-    {% set clientdiff = diidiff|merge([rec.clientDiff]) %} 
-    {% set prodiff = diidiff|merge([rec.proDiff]) %} 
-    {% set fiibullish = diidiff|merge([rec.bullish]) %} 
-    {% set fiibearish = diidiff|merge([rec.bearish]) %}
-    {% set clientbullish = diidiff|merge([rec.clientbullish]) %} 
-    {% set clientbearish = diidiff|merge([rec.clientbearish]) %} 
-    {% set probullish = diidiff|merge([rec.probullish]) %} 
-    {% set probearish = diidiff|merge([rec.probearish]) %} 
-    
+    {% set clientdiff = clientdiff|merge([rec.clientDiff]) %} 
+    {% set prodiff = prodiff|merge([rec.proDiff]) %} 
+    {% set fiibullish = fiibullish|merge([rec.fiiBullish]) %} 
+    {% set fiibearish = fiibearish|merge([rec.fiiBearish]) %}
+    {% set clientbullish = clientbullish|merge([rec.clientBullish]) %} 
+    {% set clientbearish = clientbearish|merge([rec.clientBearish]) %} 
+    {% set probullish = probullish|merge([rec.proBullish]) %} 
+    {% set probearish = probearish|merge([rec.proBearish]) %} 
+  
  {% endfor %}
+ 
 
-
-   {% set title = 'Future and Optinal Calculation Chart' %}
+   {% set title = 'Future Calculation Chart' %}
 
     {%
       set series = {
-        'long_diff' : {
-          'title' : 'Long Net Difference plotted',
-          'data' : netdiff
-        },
-        'short_diff' : {
-          'title' : 'Short Net Difference plotted',
-          'data' : shortnetdiff
-        },
         'fii_diff' : {
           'title' : 'FII Difference plotted',
           'data' : fiidiff
@@ -63,6 +55,24 @@
           'title' : 'Pro Difference plotted',
           'data' : prodiff
         },
+        
+      }
+    %}
+   
+    {%
+      set xaxis = {
+        'title' : 'X-Axis Label',
+        'labels' : date
+      }
+    %}
+    
+    {{ chart('my_twig_chart', 'line', title, series, xaxis, [], []) }}
+
+
+     {% set title = 'Optinal Calculation Chart' %}
+
+    {%
+      set series = {
         'fii_bullish' : {
           'title' : 'FII Bullish plotted',
           'data' : fiibullish

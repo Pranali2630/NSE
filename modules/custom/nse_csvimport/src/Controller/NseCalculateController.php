@@ -562,31 +562,36 @@ class NseCalculateController extends ControllerBase
             // $fii_call_longN = $fii_call_long[$id];
             // $fii_put_shortN = $fii_put_short[$id];
             //$fiibullishN = number_format($fiibullish[$id],2);
+            $fiiBullish=$fiibullish[$id];
             $fiibullishN= preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $fiibullish[$id]);
             // $fii_call_shortN = $fii_call_short[$id];
             // $fii_put_longN = $fii_put_long[$id];
             //$fiibearishN = number_format($fiibearish[$id],2);
+            $fiiBearish=$fiibearish[$id];
             $fiibearishN= preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $fiibearish[$id]);
 
             // $client_call_longN = $client_call_long[$id];
             // $client_put_shortN = $client_put_short[$id];
             //$clientbullishN = number_format($clientbullish[$id],2);
-            
+            $clientBullish=$clientbullish[$id];
             $clientbullishN =preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $clientbullish[$id]);
             
             
             // $client_call_shortN = $client_call_short[$id];
             // $client_put_longN = $client_put_long[$id];
             // $clientbearishN = number_format($clientbearish[$id],2);
+            $clientBearish=$clientbearish[$id];
             $clientbearishN = preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $clientbearish[$id]);
 
             // $pro_call_longN = $pro_call_long[$id];
             // $pro_put_shortN = $pro_put_short[$id];
             //$probullishN = number_format($probullish[$id],2);
+            $proBullish=$probullish[$id];
             $probullishN = preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $probullish[$id]);
             // $pro_call_shortN = $pro_call_short[$id];
             // $pro_put_longN = $pro_put_long[$id];
             //$probearishN = number_format($probearish[$id],2);
+            $proBearish=$probearish[$id];
             $probearishN = preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $probearish[$id]);
 
             $rows[] = array(
@@ -601,19 +606,25 @@ class NseCalculateController extends ControllerBase
 
                 // 'fii_call_long' => $fii_call_longN,
                 // 'fii_put_short' => $fii_put_shortN,
+                'fiiBullish' => $fiiBullish,
                 'bullish' => $fiibullishN,
                 // 'fii_call_short' => $fii_call_shortN,
                 // 'fii_put_long' => $fii_put_longN,
+                'fiiBearish' => $fiiBearish,
                 'bearish' => $fiibearishN,
 
                 // 'client_call_long' => $client_call_longN,
                 // 'client_put_short' => $client_put_shortN,
+                'clientBullish' => $clientBullish,
                 'clientbullish' => $clientbullishN,
                 // 'client_call_short' => $client_call_shortN,
                 // 'client_put_long' => $client_put_longN,
+                'clientBearish' => $clientBearish,
                 'clientbearish' => $clientbearishN,
 
+                'proBullish' => $proBullish,
                 'probullish' => $probullishN,
+                'proBearish' => $proBearish,
                 'probearish' => $probearishN,
             );
         }
@@ -633,7 +644,6 @@ class NseCalculateController extends ControllerBase
 
         
     }
-
 
 
     public function downloadCsv(string $type = 'All')
